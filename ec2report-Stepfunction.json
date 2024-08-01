@@ -1,0 +1,16 @@
+{
+    "Comment": "A simple AWS Step Functions state machine that orchestrates EC2 report generation and upload.",
+    "StartAt": "FetchEC2Instances",
+    "States": {
+      "FetchEC2Instances": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:us-east-1:403336185156:function:FetchEC2Instances",
+        "Next": "UploadToS3"
+      },
+      "UploadToS3": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:us-east-1:403336185156:function:UploadtoS3",
+        "End": true
+      }
+    }
+  }
